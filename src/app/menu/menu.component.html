@@ -1,0 +1,14 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Sample Login Application</a>
+      </div>      
+      <ul class="nav navbar-nav">
+        <li class="active"><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/dashboard">Dashboard</a></li>
+        <li><a routerLink="/login" *ngIf="!isLoggedIn" id="menu-login-txt">Login</a></li>
+        <li><a (click)="logout()" *ngIf="isLoggedIn" id="menu-logout-txt">Logout</a></li>
+      </ul>
+    </div>
+</nav>
+<h6 *ngIf="isLoggedIn" id="user-welcome-txt">Welcome {{ isLoggedIn?.username }}!</h6>

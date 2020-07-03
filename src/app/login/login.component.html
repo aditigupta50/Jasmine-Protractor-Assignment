@@ -1,0 +1,40 @@
+<div id="login-title">
+    Login
+</div>
+<div>
+    <form (submit)="login()" [formGroup]="loginForm">
+        <div class="form-group">
+            <div id="invalid-cred-err" *ngIf="authFailed" class="text-danger"> {{ login_validation_messages.common.authenticationFailed }} </div>
+        </div>        
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label id="username-lbl" for="username" class="col-form-label col-form-label-sm">Username: </label>
+            </div>
+            <div class="col-sm-6">
+                <input id="username" type="text" class="form-control form-control-sm" formControlName="username">
+                <div id="username-err" class="text-danger" [hidden]="loginForm.get('username').valid || loginForm.get('username').untouched">
+                    {{ getErrorMessage('username') }}
+                </div>
+                <!-- <div id="username-err" class="text-danger" *ngIf="(loginForm.get('username').touched || loginForm.get('username').dirty) && loginForm.get('username').invalid">
+                    {{ getErrorMessage('username') }}
+                </div> -->
+            </div>           
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label id="password-lbl" for="password" class="col-form-label col-form-label-sm">Password: </label>
+            </div>
+            <div class="col-sm-6">
+                <input id="password" type="password" class="form-control form-control-sm " formControlName="password">
+                <div id="password-err" class="text-danger" [hidden]="loginForm.get('password').valid || loginForm.get('password').untouched">
+                    {{ getErrorMessage('password') }}
+                </div>
+
+                <!-- <div id="password-err" class="text-danger" *ngIf="(loginForm.get('password').touched || loginForm.get('password').dirty) && loginForm.get('password').invalid">
+                    {{ getErrorMessage('password') }}
+                </div> -->
+            </div>            
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" id="login-btn">Login</button>
+    </form>
+</div>
